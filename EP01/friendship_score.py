@@ -2,10 +2,19 @@ def friendship_score(g, p):
     resultado = 0
     visitado = []
     triangulo = 0
+    if g == None:
+        return None
 
-    if len(visitado) == 0:
+    if p == None:
+        count = 0
+        for vizinho in g.outedges_of(p):
+            count += 1
+        return count
+
         visitado.append(p)
         for vizinho in g.outedges_of(p):
+            if (vizinho) == None:
+                return g.outedges_of(p)
             resultado += 1
             # print(p)
             vertice_vizinho = g.opposite(vizinho, p)
@@ -51,4 +60,3 @@ def friendship_score(g, p):
         a = triangulo + resultado
         # print(a)
         return a
-    return ''
